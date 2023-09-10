@@ -13,6 +13,6 @@ Content-Type: application/json
 }
 
 ### ELIMINAR
-DELETE http://localhost:3000/api/tasks/1
+DELETE http://localhost:3000/api/tasks/3
 
 
