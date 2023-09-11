@@ -9,7 +9,7 @@ Content-Type: application/json
 {
     "title": "22",
     "description":"nueva descripcion",
-    "poster":"www.url.com"
+    "poster": "www.url.com"
 }
 
 ### Modificar Tarea
