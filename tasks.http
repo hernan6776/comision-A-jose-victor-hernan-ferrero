@@ -13,7 +13,7 @@ Content-Type: application/json
 }
 
 ### Modificar Tarea
-PUT http://localhost:3000/api/tasks/2
+PUT http://localhost:3000/api/tasks/
 Content-Type: application/json
 
 {
@@ -21,6 +21,6 @@ Content-Type: application/json
 }
 
 ### ELIMINAR
-DELETE http://localhost:3000/api/tasks/3
+DELETE http://localhost:3000/api/tasks/
 
 

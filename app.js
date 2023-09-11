@@ -1,13 +1,13 @@
 import express from 'express';
 import { taskRouter } from './src/routes/task.routes.js';
 import { startDb } from './src/config/database.js';
+import cors from 'cors';
 
-// const cors = require('cors');
 const app = express();
-// app.use(cors());
 
 //middlewares
 app.use(express.json())
+app.use(cors());
 
 const port = 3000;
 
