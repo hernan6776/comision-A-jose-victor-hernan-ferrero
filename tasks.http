@@ -7,9 +7,17 @@ POST http://localhost:3000/api/tasks
 Content-Type: application/json
 
 {
-    "title":"nuevo titulo",
+    "title": "22",
     "description":"nueva descripcion",
     "poster":"www.url.com"
+}
+
+### Modificar Tarea
+PUT http://localhost:3000/api/tasks/2
+Content-Type: application/json
+
+{
+    "title":"Primer tarea"
 }
 
 ### ELIMINAR
