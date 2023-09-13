@@ -7,9 +7,9 @@ POST http://localhost:3000/api/tasks
 Content-Type: application/json
 
 {
-    "title": "22",
-    "description":"nueva descripcion",
-    "poster": "www.url.com"
+    "title": "Quinto Posteo",
+    "description":"Quinta descripcion",
+    "poster": "https://img.freepik.com/vector-gratis/concepto-videoconferencia-landing-page_52683-11841.jpg"
 }
 
 ### Modificar Tarea
