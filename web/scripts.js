@@ -1,6 +1,24 @@
 
 const contenedor = document.getElementById("container-row")
+const btnCrear = document.getElementById("btn-new")
+const myModal = new bootstrap.Modal(document.getElementById('myModal'))
+const btnSave = document.getElementById("btn-save")
+
 let html = ''
+let option = ''
+
+const inputTitle = document.getElementById("inputTitle")
+const inputDescription = document.getElementById("inputDescription")
+const inputPoster = document.getElementById("inputPoster")
+
+btnCrear.addEventListener("click", () => {
+    option = "new"
+    btnSave.textContent = "New"
+    inputTitle.value = ""
+    inputDescription.value = ""
+    inputPoster.value = ""
+    myModal.show()
+})
 
 fetch('http://localhost:3000/api/tasks')
     .then(res => res.json())
