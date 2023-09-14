@@ -1,4 +1,7 @@
 
+### VISTAS
+GET http://localhost:3000/tasks
+
 ### Traer Tareas
 GET http://localhost:3000/api/tasks
 

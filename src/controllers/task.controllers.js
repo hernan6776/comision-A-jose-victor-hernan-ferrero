@@ -1,6 +1,6 @@
 import { TaskModel } from "../models/Tasks.js"
 
-const personas = [
+const alumnos = [
     {
         nombre:"Juan",
         apellido:"Perez"
@@ -18,7 +18,7 @@ const personas = [
 //controlador para mostrar la vista
 
 export const ctrlView = (req, res) => {
-    res.render('index.ejs',{title: "Hola mundo desde ejs", personas})
+    res.render('index.ejs', {title: "ahora es un titulo", alumnos})
 }
 
 
