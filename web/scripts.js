@@ -7,6 +7,7 @@ const form = document.getElementById("formulario");
 
 let html = '';
 let option = '';
+let idForm = '';
 
 const inputTitle = document.getElementById("inputTitle");
 const inputDescription = document.getElementById("inputDescription");
@@ -14,7 +15,7 @@ const inputPoster = document.getElementById("inputPoster");
 
 btnCrear.addEventListener("click", () => {
     option = "new"
-    btnSave.textContent = "New";
+    btnSave.textContent = "new";
     inputTitle.value = "";
     inputDescription.value = "";
     inputPoster.value = "";
@@ -83,6 +84,7 @@ document.addEventListener("click", (event) => {
         const titleEdit = article.children[0].children[1].children[0].textContent;
         const descriptionEdit = article.children[0].children[1].children[1].textContent;
 
+        idForm = idArticle;
         inputTitle.value = titleEdit;
         inputDescription.value = descriptionEdit;
         inputPoster.value = urlPosterEdit;
@@ -94,13 +96,12 @@ document.addEventListener("click", (event) => {
 
 form.addEventListener("submit", (event) => {
     event.preventDefault();
-    console.log("Submit");
-
+    
     if(option === "new") {
         const newTask = {
             title:inputTitle.value,
             description: inputDescription.value,
-            url:inputPoster.value,
+            poster:inputPoster.value,
         };
 
         fetch('http://localhost:3000/api/tasks', {
@@ -118,16 +119,33 @@ form.addEventListener("submit", (event) => {
         });
     }   
 
-    // if(option === "edit") {
+    if(option === "edit") {
+        const newTask = {
+            title:inputTitle.value,
+            description: inputDescription.value,
+            poster:inputPoster.value,
+        };
 
-    // }
-
-});
+        fetch(`http://localhost:3000/api/tasks/${idForm}`,{
+        method: 'PUT',
+        headers: {
+            "content-type": "application/json"
+            },
+            body: JSON.stringify(newTask)
+            }).then(res => {
+                if(res.ok) {
+                    alert('Posteo Edit Successfully')
+                    myModal.hide();
+                    location.reload();
+                }
+            })
+        }
+    });
 
 fetch('http://localhost:3000/api/tasks')
     .then(res => res.json())
     .then(data => {
-        console.log(data);
+        
         data.forEach(task => {
             html += `
             <article class="col-4 d-flex justify-content-center mb-3" data-id="${task.id}">
