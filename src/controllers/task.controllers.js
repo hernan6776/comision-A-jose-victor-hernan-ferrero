@@ -1,5 +1,26 @@
 import { TaskModel } from "../models/Tasks.js"
 
+const personas = [
+    {
+        nombre:"Juan",
+        apellido:"Perez"
+    },
+    {
+        nombre:"Pedro",
+        apellido:"Gomez"
+    },
+    {
+        nombre:"Maria",
+        apellido:"Lopez"
+    },
+]
+
+//controlador para mostrar la vista
+
+export const ctrlView = (req, res) => {
+    res.render('index.ejs',{title: "Hola mundo desde ejs", personas})
+}
+
 
 //controlador para traer todas las tareas
 export const ctrlGetTasks = async (req,res) => {
