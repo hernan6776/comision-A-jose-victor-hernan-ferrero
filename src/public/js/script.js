@@ -27,16 +27,6 @@ document.addEventListener("click", (event) => {
         const article = event.target.closest(".col-4");
         const idArticle = article.dataset.id;
         
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-            if (result.isConfirmed) {
                 fetch(`http://localhost:3000/api/tasks/${idArticle}`,{
                     method: "DELETE"
                 }).then(res =>{
@@ -46,16 +36,9 @@ document.addEventListener("click", (event) => {
                 }).catch(err =>{
                     console.error(err)
                 })
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success'
-                )
-            }
-        })
+        }
+    })
 
-    }
-})
 
 document.addEventListener("click", (event) => {
     if(event.target.matches("#btn-edit")){
@@ -122,29 +105,4 @@ form.addEventListener("submit", (event) => {
                 }
             })
         }
-    });
-
-fetch('http://localhost:3000/api/tasks')
-    .then(res => res.json())
-    .then(data => {
-        
-        data.forEach(task => {
-            html += `
-            <article class="col-4 d-flex justify-content-center mb-3" data-id="${task.id}">
-                <div class="card" style="width: 18rem;">
-                    <img src="${task.poster}" class="card-img-top" alt="imagen de gente en un foro virtual debatiendo">
-                    <div class="card-body">
-                        <h5 class="card-title">${task.title}</h5>
-                        <p class="card-text">${task.description}</p>
-                        <div>
-                            <button class="btn btn-success" id="btn-edit">Edit</button>
-                            <button type="" class="btn btn-danger" id="btn-delete">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            `
-
-            contenedor.innerHTML = html;
-        });
     });
