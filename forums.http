@@ -1,0 +1,29 @@
+
+### VISTAS
+GET http://localhost:3002/forums
+
+### Traer Foros
+GET http://localhost:3002/api/forums
+
+### Crear Foros
+POST http://localhost:3002/api/forums
+Content-Type: application/json
+
+{
+    "title": "Sexto Posteo",
+    "description":"Sexta descripcion",
+    "poster": "https://www.comparahosting.com/wp-content/uploads/2020/06/Imagen-pincipal-foro-en-l%C3%ADnea.jpg"
+}
+
+### Modificar Foros
+PUT http://localhost:3002/api/forums/
+Content-Type: application/json
+
+{
+    "title":"Primer Foro"
+}
+
+### ELIMINAR
+DELETE http://localhost:3002/api/forums/
+
+

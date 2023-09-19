@@ -27,7 +27,7 @@ document.addEventListener("click", (event) => {
         const article = event.target.closest(".col-4");
         const idArticle = article.dataset.id;
         
-                fetch(`http://localhost:3000/api/tasks/${idArticle}`,{
+                fetch(`http://localhost:3002/api/forums/${idArticle}`,{
                     method: "DELETE"
                 }).then(res =>{
                     if(res.ok){
@@ -63,18 +63,18 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
     
     if(option === "new") {
-        const newTask = {
+        const newForum = {
             title:inputTitle.value,
             description: inputDescription.value,
             poster:inputPoster.value,
         };
 
-        fetch('http://localhost:3000/api/tasks', {
+        fetch('http://localhost:3002/api/forums', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"
             },
-            body: JSON.stringify(newTask),
+            body: JSON.stringify(newForum),
         }).then(res => {
             if (res.ok) {
                 alert('Posteo Created Successfully');
@@ -85,18 +85,18 @@ form.addEventListener("submit", (event) => {
     }   
 
     if(option === "edit") {
-        const newTask = {
+        const newForum = {
             title:inputTitle.value,
             description: inputDescription.value,
             poster:inputPoster.value,
         };
 
-        fetch(`http://localhost:3000/api/tasks/${idForm}`,{
+        fetch(`http://localhost:3002/api/forums/${idForm}`,{
         method: 'PUT',
         headers: {
             "content-type": "application/json"
             },
-            body: JSON.stringify(newTask)
+            body: JSON.stringify(newForum)
             }).then(res => {
                 if(res.ok) {
                     alert('Posteo Edit Successfully')

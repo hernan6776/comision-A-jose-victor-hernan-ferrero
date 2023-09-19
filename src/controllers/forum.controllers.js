@@ -1,4 +1,4 @@
-import { TaskModel } from "../models/Tasks.js"
+import { ForumModel } from "../models/Forums.js"
 
 // const alumnos = [
 //     {
@@ -25,8 +25,8 @@ import { TaskModel } from "../models/Tasks.js"
 
 export const ctrlView = async (req, res) => {
     try {
-        const tasks = await TaskModel.findAll();
-            res.render('tasks.ejs',{tasks})
+        const forums = await ForumModel.findAll();
+            res.render('forums.ejs',{forums})
 
     } catch (error) {
         console.error(error)
@@ -37,11 +37,11 @@ export const ctrlView = async (req, res) => {
 }
 
 //controlador para traer todas las tareas
-export const ctrlGetTasks = async (req,res) => {
+export const ctrlGetForums = async (req,res) => {
     try {
-        const task = await TaskModel.findAll();
-        if(!task) return res.status(404)
-            return res.status(200).json(task)
+        const forum = await ForumModel.findAll();
+        if(!forum) return res.status(404)
+            return res.status(200).json(forum)
 
     } catch (error) {
         console.error(error)
@@ -52,10 +52,10 @@ export const ctrlGetTasks = async (req,res) => {
 }
 
 //controlador para crear una tarea
-export const ctrlCreateTask = async (req,res) => {
+export const ctrlCreateForum = async (req,res) => {
     try {
-        const newTask = await TaskModel.create(req.body)
-        return res.status(201).json(newTask)
+        const newForum = await ForumModel.create(req.body)
+        return res.status(201).json(newForum)
     } catch (error) {
         console.error(error)
         return res.status(500).json({
@@ -65,17 +65,17 @@ export const ctrlCreateTask = async (req,res) => {
 }
 
 //controlador para modificar una tarea
-export const ctrlUpdateTask = async (req,res) => {
+export const ctrlUpdateForum = async (req,res) => {
     const { id } = req.params
     try {
-        const task = await TaskModel.findByPk(id)
-        if(!task) {
+        const forum = await ForumModel.findByPk(id)
+        if(!forum) {
             return res.status(404).json({
                 message: 'Tarea no Encontrada'
             })
         }
-        task.update(req.body)
-        return res.status(200).json(task)
+        forum.update(req.body)
+        return res.status(200).json(forum)
     } catch (error) {
         console.error(error)
         return res.status(500).json({
@@ -85,15 +85,15 @@ export const ctrlUpdateTask = async (req,res) => {
 }
 
 //controlador para eliminar una tarea
-export const ctrlDeleteTask = async (req,res) => {
+export const ctrlDeleteForum = async (req,res) => {
     const { id } = req.params
     try {
-        const taskDeleted = await TaskModel.destroy({
+        const forumDeleted = await ForumModel.destroy({
             where: { 
                 id: id 
             }
         })
-        if(!taskDeleted){
+        if(!forumDeleted){
             return res.status(404).json({
                 message: 'Tarea no Encontrada'
             })
